@@ -21,6 +21,19 @@ def update_image():
             img = Image.open(requests.get(bird_image_url, stream=True).raw)
             file_type = img.format.lower()
 
+            with open(f"bird.{file_type}", "wb") as f:
+                f.write(image.content)
+
+            img = Image.open(f"bird.{file_type}")
+            img = img.resize((400, 400))
+            tk_img = ImageTk.PhotoImage(img)
+
+            label.config(image=tk_img)
+            label.image = tk_img
+            print(f"Птица: {bird_image_url}")
+        else:
+            print("Not Found")
+
 root = Tk()
 root.title("Random Bird")
 root.geometry("500x500")
