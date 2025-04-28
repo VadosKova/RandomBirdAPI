@@ -13,6 +13,14 @@ def update_image():
         data = response.json()
         print(data)
 
+        if data:  # Если список не пустой
+            bird_image_url = data[0]["urls"]["regular"]
+
+            image = requests.get(bird_image_url)
+
+            img = Image.open(requests.get(bird_image_url, stream=True).raw)
+            file_type = img.format.lower()
+
 root = Tk()
 root.title("Random Bird")
 root.geometry("500x500")
