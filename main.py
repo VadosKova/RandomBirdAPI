@@ -13,7 +13,7 @@ def update_image():
         data = response.json()
         print(data)
 
-        if data:  # Если список не пустой
+        if data:
             bird_image_url = data[0]["urls"]["regular"]
 
             image = requests.get(bird_image_url)
