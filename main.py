@@ -33,6 +33,8 @@ def update_image():
             print(f"Птица: {bird_image_url}")
         else:
             print("Not Found")
+    else:
+        print(f"Error: {response.status_code}")
 
 root = Tk()
 root.title("Random Bird")
@@ -41,7 +43,9 @@ root.geometry("500x500")
 label = Label(root)
 label.pack(padx=20, pady=20)
 
-btn = Button(root, text="Next")
+update_image()
+
+btn = Button(root, text="Next", command=update_image)
 btn.pack(pady=10)
 
 root.mainloop()
