@@ -5,7 +5,13 @@ from PIL import Image, ImageTk
 
 access_key = "zcM-4apdjE3GtYjE3g2MA3cyORU_Pntf5CD9OFCvNfI"
 
+def update_image():
+    url = f"https://api.unsplash.com/photos/random?query=bird&client_id={access_key}&count=1"
+    response = requests.get(url)
 
+    if response.status_code == 200:
+        data = response.json()
+        print(data)
 
 root = Tk()
 root.title("Random Bird")
